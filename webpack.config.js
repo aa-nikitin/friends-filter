@@ -32,7 +32,7 @@ module.exports = {
         new ExtractTextPlugin('styles.css'),
         new HtmlPlugin({
             title: 'Loft School sample project',
-            template: 'index.hbs'
+            template: 'index.html'
         }),
         new CleanWebpackPlugin(['dist'])
     ]

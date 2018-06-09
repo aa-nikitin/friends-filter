@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+        <script src="http://vk.com/js/api/openapi.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="/app.css">
+        
+    </head>
+    <body>
+        <section class="content">
+            <a class="open-modal">
+                <img class="open-modal__img" src="assets/img/content/df.png" alt="">
+            </a>
+        </section>
+
+        <section class="modal" id="drugo-filter">
+            <div class="modal__container"> 
+                <div class="drugo-filter">
+                    <div class="drugo-filter__head">Выберите друзей
+                        <div class="drugo-filter__close">   </div>
+                    </div>
+                    <div class="drugo-filter__context">
+                        <div class="columns bg_gray">
+                            <div class="columns__item"> 
+                            <div class="search search_field_icon">
+                                <input id="search-friends" class="search_padding-left_30 search__field" type="text" placeholder="Начните вводить имя друга">
+                            </div>
+                            </div>
+                            <div class="columns__item">
+                            <div class="search">
+                                <input id="search-friends-favorite" class="search__field" type="text" placeholder="Название">
+                            </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="columns__item">
+                            <div class="columns__head">Ваши друзья</div>
+                            <div id="friends-vk" class="friends-list">
+                                
+                            </div>
+                            </div>
+                            <div class="columns__item">
+                            <div class="columns__head">Друзья в списке</div>
+                            <div id="friends-favorite" class="friends-list friends-list">
+ 
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="drugo-filter__bottom"><a class="button drugo-filter__button">Сохранить</a></div>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        <script src="/src/modules/model.js"></script>
+        <script src="/src/modules/view.js"></script>
+        <script src="/src/modules/controller.js"></script>
+        <script src="/src/modules/router.js"></script>
+        <script src="/src/modules/entry.js"></script>
+        -->
+
+        <script id="friends-template" type="text/x-handlebars-template">
+            <div class="friends">
+                {{#each items}}
+                <div draggable="true" data-id="{{id}}" class="friends-list__friend friend"> 
+                    <div class="friend__photo">
+                        <img class="friend__img" src="{{photo_100}}"/>
+                    </div>
+                    <div class="friend__name">{{full_name}}</div>
+                    <div data-action="add" class="friend__nav friend_add"></div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+
+        <script id="friends-favorite-template" type="text/x-handlebars-template">
+            <div class="friends">
+                {{#each items}}
+                <div draggable="true" data-id="{{id}}" class="friends-list__friend friend"> 
+                    <div class="friend__photo">
+                        <img class="friend__img" src="{{photo_100}}"/>
+                    </div>
+                    <div class="friend__name">{{full_name}}</div>
+                    <div data-action="del" class="friend__nav friend_del"></div>
+                </div>
+                {{/each}}
+            </div>
+        </script>
+        
+    </body>
+</html>
