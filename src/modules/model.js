@@ -1,3 +1,5 @@
+let storage = localStorage;
+
 export default {
     auth(appId, perms) {
         return new Promise((resolve, reject) => {
@@ -29,5 +31,15 @@ export default {
     },
     getFriends(params = {}) {
         return this.callAPI('friends.get', params);
+    },
+    getLocalStorage() { // сохраняем в localStorage
+        return storage.data ? JSON.parse(storage.data) : {};  
+    },
+    setLocalStorage(friendsFavorite) { // сохраняем в localStorage
+        if (Object.keys(friendsFavorite).length > 0) {
+            storage.data = JSON.stringify(friendsFavorite);
+        } else {
+            storage.data = '';    
+        }
     }
 };

@@ -1,5 +1,4 @@
 import model from './modules/model.js';
-//import view from './modules/view.js';
 import controller from './modules/controller.js';
 
 
@@ -15,10 +14,25 @@ import controller from './modules/controller.js';
 
 
 let currentDrag;
+
 const friendsVK = document.getElementById('friends-vk');
 const friendsFavorite = document.getElementById('friends-favorite');
 const searchFriends = document.getElementById('search-friends');
 const searchFavoriteFriends = document.getElementById('search-friends-favorite');
+const saveFavoriteFriends = document.getElementById('save-friends-favorite');
+const openDrugofilter = document.getElementById('open-drugofilter');
+const closeDrugofilter = document.getElementById('drugo-filter-close');
+const modalDrugofilter = document.getElementById('drugo-filter');
+
+
+
+openDrugofilter.addEventListener('click', (e) => {
+    modalDrugofilter.classList.add('modal_active');
+});
+
+closeDrugofilter.addEventListener('click', (e) => {
+    modalDrugofilter.classList.remove('modal_active');
+});
 
 friendsVK.addEventListener('click', (e) => {
     const friend = e.target.parentElement;
@@ -40,6 +54,16 @@ friendsFavorite.addEventListener('click', (e) => {
     } 
 });
 
+saveFavoriteFriends.addEventListener('click', (e) => {
+    try {
+        controller.addLocalStorage();
+        alert('Выбранные друзья успешно сохранены');
+    } catch (e) {
+        alert( "Извините, не получилось сохранить друзей" );
+        console.error( e.message );
+    }   
+});
+
 searchFriends.addEventListener('keyup', function() {
     controller.search(searchFriends.value, friendsVK);
 });
@@ -58,12 +82,11 @@ document.addEventListener('dragstart', (e) => {
 
 document.addEventListener('dragover', (e) => {
     const friend = getFriends(e.target);
+
     if (friend) {
         e.preventDefault();
     }
 });
-
-
 
 document.addEventListener('drop', (e) => {
     if (currentDrag) {
@@ -88,6 +111,8 @@ function getFriends(from) {
 
     return null;
 }
+
+
 
 
 

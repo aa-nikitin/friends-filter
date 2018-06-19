@@ -4,22 +4,30 @@ import view from './view.js';
 let friendsVK = {};
 let friendsFavorite = {};
 
+
 export default {
-    async addFriends() { // добавление друзей из вк
+    async addFriends() { // добавление друзей в списки
         const results = document.querySelector('#friends-vk');
         const friends = await model.getFriends({ fields: 'photo_100' });
+        const friendsFavoriteList = document.getElementById('friends-favorite');
+        
+        friendsFavorite = model.getLocalStorage();  
+        friendsFavoriteList.innerHTML = view.renderFromVK({'items':friendsFavorite}, 'friends-favorite-template');
+        results.innerHTML = view.renderFromVK({'items':friendsVK}, 'friends-template');
 
         for (let item of friends.items) {
-            //console.log(item);
             let obj = {
                 'id':`${item.id}`, 
                 'full_name':`${item.first_name} ${item.last_name}`,
                 'photo_100':item.photo_100
             };
-            friendsVK[item.id] = obj;
+            if (friendsFavorite[item.id] === undefined) {
+                friendsVK[item.id] = obj;
+            }
         }
-
+        
         results.innerHTML = view.renderFromVK({'items':friendsVK}, 'friends-template');
+        
     },
     isFriend(name, chunk) { // проверка на соответствие поиску
         name = name.toLowerCase();
@@ -71,6 +79,8 @@ export default {
             }
         }
         friendsList.innerHTML = view.renderFromVK({'items':searchFriends}, templateName);
-        console.log(friendsList.id);
     }, 
+    addLocalStorage() { // сохраняем в localStorage
+        model.setLocalStorage(friendsFavorite);
+    }
 };

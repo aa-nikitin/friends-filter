@@ -10,7 +10,7 @@
     </head>
     <body>
         <section class="content">
-            <a class="open-modal">
+            <a class="open-modal" id="open-drugofilter">
                 <img class="open-modal__img" src="assets/img/content/df.png" alt="">
             </a>
         </section>
@@ -19,7 +19,7 @@
             <div class="modal__container"> 
                 <div class="drugo-filter">
                     <div class="drugo-filter__head">Выберите друзей
-                        <div class="drugo-filter__close">   </div>
+                        <div class="drugo-filter__close" id="drugo-filter-close">   </div>
                     </div>
                     <div class="drugo-filter__context">
                         <div class="columns bg_gray">
@@ -43,31 +43,23 @@
                             </div>
                             <div class="columns__item">
                             <div class="columns__head">Друзья в списке</div>
-                            <div id="friends-favorite" class="friends-list friends-list">
+                            <div id="friends-favorite" class="friends-list">
  
                             </div>
                             </div>
                         </div>
                     </div>
-                    <div class="drugo-filter__bottom"><a class="button drugo-filter__button">Сохранить</a></div>
+                    <div class="drugo-filter__bottom"><a id="save-friends-favorite" class="button drugo-filter__button">Сохранить</a></div>
                 </div>
             </div>
         </section>
-        
-        <!--
-        <script src="/src/modules/model.js"></script>
-        <script src="/src/modules/view.js"></script>
-        <script src="/src/modules/controller.js"></script>
-        <script src="/src/modules/router.js"></script>
-        <script src="/src/modules/entry.js"></script>
-        -->
 
         <script id="friends-template" type="text/x-handlebars-template">
             <div class="friends">
                 {{#each items}}
                 <div draggable="true" data-id="{{id}}" class="friends-list__friend friend"> 
                     <div class="friend__photo">
-                        <img class="friend__img" src="{{photo_100}}"/>
+                        <img draggable="false" class="friend__img" src="{{photo_100}}"/>
                     </div>
                     <div class="friend__name">{{full_name}}</div>
                     <div data-action="add" class="friend__nav friend_add"></div>
@@ -79,9 +71,9 @@
         <script id="friends-favorite-template" type="text/x-handlebars-template">
             <div class="friends">
                 {{#each items}}
-                <div draggable="true" data-id="{{id}}" class="friends-list__friend friend"> 
+                <div draggable="false" data-id="{{id}}" class="friends-list__friend friend"> 
                     <div class="friend__photo">
-                        <img class="friend__img" src="{{photo_100}}"/>
+                        <img draggable="false" class="friend__img" src="{{photo_100}}"/>
                     </div>
                     <div class="friend__name">{{full_name}}</div>
                     <div data-action="del" class="friend__nav friend_del"></div>
