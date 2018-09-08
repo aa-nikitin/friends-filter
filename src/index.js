@@ -1,7 +1,9 @@
 import model from './modules/model.js';
 import controller from './modules/controller.js';
+import './styles/app.scss';
+import font from './fontawesome-webfont.woff'
 
-
+console.log(font);
 
 (async () => {
     try {

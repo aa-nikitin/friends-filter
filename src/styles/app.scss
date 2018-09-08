@@ -1,0 +1,29 @@
+$white: #fff;
+$orange: #ff8663;
+$gray: #f0f0f0;
+
+$blue-light: #57e6e6;
+$blue: #2196f3;
+$navy: #226088;
+$yellow: #ffeb3b;
+$green: #5da130;
+$error-color: #ff0505;
+$font-color: #333333;
+$titles-color: $font-color;
+
+@import "layout/mixins.scss";
+@import "layout/fonts.scss";
+@import "layout/flexgrid.scss";
+@import "layout/base.scss";
+@import "layout/typography.scss";
+
+
+
+//@import "components/dialog-window.scss";
+@import "components/drugo-filter.scss";
+@import "components/friend.scss";
+@import "components/friends-list.scss";
+@import "components/columns.scss";
+@import "components/modal.scss";
+@import "components/content.scss";
+@import "components/search.scss";

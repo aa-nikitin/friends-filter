@@ -1,0 +1,30 @@
+.search {
+    position:relative;   
+}
+
+.search__field {
+    display:block;
+    width:100%;
+    padding:10px 15px;
+    @include mainfont(300);
+    outline:none;
+    border:none;
+    border-radius: 20px;
+    line-height:1;
+}
+
+.search_field_icon {
+    &:before {
+        @include awesome-ico('\f002');
+        @include centered(y);
+        left:10px;
+        color: #9f9f9f;
+        font-size:14px;
+    }
+}
+
+.search_padding-left_30 {
+    padding-left:30px;
+}
+
+@include placeholder('search__field',#9f9f9f);
